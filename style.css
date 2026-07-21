@@ -1,0 +1,184 @@
+/* ========================================================================
+   Palak Verma — Portfolio
+   Design direction: a working paper / equity research note, on light paper.
+   Ink navy text, brick-red rule/accent, warm hairline borders, tabular data
+   set in mono. Section numbers act as real reference codes (used in nav
+   and page headers) rather than decoration.
+   ======================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --paper:      #faf9f5;
+  --paper-deep: #f2f0e8;
+  --ink:        #1c2a33;
+  --ink-soft:   #4a5a63;
+  --rule:       #d9d4c4;
+  --accent:     #8a3324;
+  --accent-soft:#b9563f;
+  --mono-bg:    #eeece2;
+
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans:  'Public Sans', -apple-system, Segoe UI, sans-serif;
+  --mono:  'IBM Plex Mono', Menlo, Consolas, monospace;
+
+  --maxw: 880px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:var(--accent); text-decoration:none;}
+a:hover{text-decoration:underline;}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+h1,h2,h3{font-family:var(--serif); color:var(--ink); font-weight:600; margin:0;}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+/* ---------- Header / Nav ---------- */
+.site-header{
+  border-bottom:1px solid var(--rule);
+  background:var(--paper);
+  position:sticky; top:0; z-index:10;
+}
+.site-header .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  padding-top:18px; padding-bottom:18px;
+}
+.brand{
+  font-family:var(--serif); font-weight:700; font-size:1.15rem;
+  color:var(--ink); letter-spacing:0.01em;
+}
+.brand small{
+  display:block; font-family:var(--mono); font-weight:400; font-size:0.68rem;
+  color:var(--ink-soft); letter-spacing:0.08em; text-transform:uppercase; margin-top:2px;
+}
+nav.primary ul{
+  list-style:none; display:flex; gap:28px; margin:0; padding:0;
+  font-family:var(--mono); font-size:0.8rem; letter-spacing:0.03em;
+}
+nav.primary a{
+  color:var(--ink-soft); text-decoration:none; padding:4px 0;
+  border-bottom:2px solid transparent;
+}
+nav.primary a:hover, nav.primary a[aria-current="page"]{
+  color:var(--ink); border-bottom-color:var(--accent); text-decoration:none;
+}
+.nav-toggle{display:none;}
+
+@media (max-width: 640px){
+  .site-header .wrap{flex-wrap:wrap; row-gap:12px;}
+  nav.primary ul{gap:18px; flex-wrap:wrap;}
+}
+
+/* ---------- Section index rail (signature element) ---------- */
+.doc-section{padding:56px 0; border-bottom:1px solid var(--rule);}
+.doc-section:last-of-type{border-bottom:none;}
+.doc-section .index{
+  font-family:var(--mono); font-size:0.75rem; color:var(--accent);
+  letter-spacing:0.06em; display:block; margin-bottom:10px;
+}
+.doc-section h2{font-size:1.5rem;}
+.doc-section .lede{color:var(--ink-soft); max-width:60ch; margin-top:10px;}
+
+/* ---------- Hero ---------- */
+.hero{padding:72px 0 48px;}
+.hero .kicker{
+  font-family:var(--mono); font-size:0.78rem; color:var(--accent);
+  text-transform:uppercase; letter-spacing:0.1em; margin-bottom:14px; display:block;
+}
+.hero h1{font-size:2.5rem; line-height:1.15; max-width:16ch;}
+.hero .role{
+  font-family:var(--serif); font-style:italic; color:var(--ink-soft);
+  font-size:1.15rem; margin-top:10px;
+}
+.hero p.summary{max-width:62ch; color:var(--ink-soft); margin-top:20px; font-size:1.02rem;}
+.hero .actions{margin-top:28px; display:flex; gap:16px; flex-wrap:wrap;}
+
+.btn{
+  font-family:var(--mono); font-size:0.82rem; letter-spacing:0.02em;
+  padding:10px 18px; border:1px solid var(--ink); color:var(--ink);
+  display:inline-block; text-decoration:none; transition:background .15s, color .15s;
+}
+.btn:hover{background:var(--ink); color:var(--paper); text-decoration:none;}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+.btn.primary:hover{background:var(--accent-soft); border-color:var(--accent-soft);}
+
+/* ---------- Credentials table ---------- */
+table.credentials{
+  width:100%; border-collapse:collapse; font-size:0.92rem; margin-top:18px;
+}
+table.credentials th{
+  text-align:left; font-family:var(--mono); font-size:0.72rem; text-transform:uppercase;
+  letter-spacing:0.06em; color:var(--ink-soft); border-bottom:1px solid var(--ink);
+  padding:8px 10px 8px 0; font-weight:500;
+}
+table.credentials td{
+  padding:12px 10px 12px 0; border-bottom:1px solid var(--rule); vertical-align:top;
+}
+table.credentials td.status{
+  font-family:var(--mono); font-size:0.75rem; white-space:nowrap;
+  color:var(--ink-soft);
+}
+table.credentials td.status.done{color:var(--accent);}
+
+/* ---------- Project cards ---------- */
+.projects-grid{display:grid; gap:1px; background:var(--rule); margin-top:24px;}
+.project-card{background:var(--paper); padding:26px 24px;}
+.project-card .tag{
+  font-family:var(--mono); font-size:0.7rem; color:var(--accent);
+  text-transform:uppercase; letter-spacing:0.07em;
+}
+.project-card h3{font-size:1.15rem; margin-top:8px;}
+.project-card p{color:var(--ink-soft); margin-top:8px; font-size:0.95rem;}
+.project-card .metrics{
+  display:flex; gap:22px; margin-top:14px; flex-wrap:wrap;
+}
+.project-card .metric{font-family:var(--mono); font-size:0.8rem; color:var(--ink);}
+.project-card .metric span{display:block; color:var(--ink-soft); font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em;}
+
+/* ---------- Blog list ---------- */
+.post-list{margin-top:24px;}
+.post-item{
+  padding:20px 0; border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+}
+.post-item .date{font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft); min-width:110px;}
+.post-item h3{font-size:1.05rem; font-weight:600;}
+.post-item p{color:var(--ink-soft); font-size:0.92rem; margin-top:6px;}
+.post-empty{
+  border:1px dashed var(--rule); padding:32px; text-align:center; color:var(--ink-soft);
+  font-size:0.95rem; margin-top:24px;
+}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:flex; gap:40px; flex-wrap:wrap; margin-top:24px;}
+.contact-item .label{
+  font-family:var(--mono); font-size:0.72rem; text-transform:uppercase;
+  letter-spacing:0.06em; color:var(--ink-soft); display:block; margin-bottom:6px;
+}
+.contact-item a, .contact-item span.value{font-size:1.05rem; font-family:var(--serif);}
+
+/* ---------- Footer ---------- */
+footer{
+  border-top:1px solid var(--rule); padding:28px 0; margin-top:20px;
+}
+footer .wrap{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+}
+footer p{font-family:var(--mono); font-size:0.72rem; color:var(--ink-soft); margin:0;}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+}
